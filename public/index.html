@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HouseCalculator</title>
+    <title>CanIBuyAHouse.ie</title>
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="HouseCalculator.styles.css" asp-append-version="true" />
@@ -14,408 +14,484 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">CanIBuyAHouse &#127969;</a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index">&#127969; CanIBuyAHouse.ie </a>
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
+            <div>
+                <h1 class="text-center">&#127969; Can i buy a house? &#127969;</h1>
+                <p>
+                    A question on a lot of peoples mind right now... </p>
+                <p> I'm not going to beat around the bush here.
+                    I had the same question and not enough awnsers, so i got googling. Turns out there is a lot of
+                    information out there, but it can be a bit of an overload.
+                </p>
 
-
-
-            <div class="container">
-                <div>
-                    <h1 class="text-center">Can i buy a house? &#127969;</h1>
-                    <p>
-                        A question on a lot of young peoples mind right now. I'm not going to beat around the bush here.
-                        I had the same question, and as such i came up with this tool/website to try and help.
-                        Simply enter the details you know below and get your result at the bottom. None of this
-                        information is stored and all of it is calculated in browser. You can even save your session
-                        progress as a cookie
-                        if you want to come back to it later on.
-                    </p>
-                </div>
-                <hr />
-                <div class="row row-cols-1 row-cols-md-3">
-                    <div class="col mb-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="text-center">The 'You'</h3>
-                            </div>
-
-                            <div class="card-body">
-
-                                <div>
-                                    <input type="checkbox" class="form-check-input" oninput="recalculateData()"
-                                        id="useLHAL" />
-                                    <a href="https://localauthorityhomeloan.ie/">Use the LHAL?</a>
-                                    <br />
-
-                                    <input type="checkbox" class="form-check-input" oninput="recalculateData()"
-                                        id="amFtb" />
-                                    <a href="https://localauthorityhomeloan.ie/">First Time Buyer?</a>
-                                </div>
-                                <hr />
-                                <div>
-                                    <label class="form-check-label">Salary</label>
-                                    <label id="sMinLabel" class="form-label">0</label>
-                                    <label> - </label>
-                                    <label id="sMaxLabel" class="form-label">0</label>
-                                    <input type="range" min="10000" max="200000" value="0" class="form-range"
-                                        id="sSlider" oninput="recalculateData()" step="1000">
-                                    <input type="number" value="0" class="form-control" id="sPriceLabel"
-                                        name="quantity" />
-                                </div>
-                                <hr />
-                                <div>
-                                    <label>Max Mortgage</label>
-                                    <output id="maxMortgageLabel">
-                                    </output>
-                                </div>
-                            </div>
+                <p>
+                    This website may help you. <b>All the information entered below is calcualted in browser and is not
+                        stored. </b>
+                </p>
+            </div>
+            <hr />
+            <div class="row row-cols-1 row-cols-md-3">
+                <div class="col mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-center">The 'You'</h3>
                         </div>
-                    </div>
-                    <div class="col mb-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title text-center">The House Itself</h3>
-                            </div>
-                            <div class="card-body">
-                                <div>
-                                    <label for="cars">Property Condition</label>
 
-                                    <select class="form-select" name="pc" id="pcSelect" oninput="recalculateData()">
-                                        <option value="pcNH">New House</option>
-                                        <option value="pcSHH">Second Hand House</option>
-                                        <option value="pcSB">Self Build</option>
-                                    </select>
-
-                                    <label for="cars">County</label>
-                                    <select class="form-select" name="county" id="county">
-                                        <option value="antrim">Antrim</option>
-                                        <option value="armagh">Armagh</option>
-                                        <option value="carlow">Carlow</option>
-                                        <option value="cavan">Cavan</option>
-                                        <option value="clare">Clare</option>
-                                        <option value="cork">Cork</option>
-                                        <option value="derry">Derry</option>
-                                        <option value="donegal">Donegal</option>
-                                        <option value="down">Down</option>
-                                        <option value="dublin">Dublin</option>
-                                        <option value="fermanagh">Fermanagh</option>
-                                        <option value="galway">Galway</option>
-                                        <option value="kerry">Kerry</option>
-                                        <option value="kildare">Kildare</option>
-                                        <option value="kilkenny">Kilkenny</option>
-                                        <option value="laois">Laois</option>
-                                        <option value="leitrim">Leitrim</option>
-                                        <option value="limerick">Limerick</option>
-                                        <option value="longford">Longford</option>
-                                        <option value="louth">Louth</option>
-                                        <option value="mayo">Mayo</option>
-                                        <option value="meath">Meath</option>
-                                        <option value="monaghan">Monaghan</option>
-                                        <option value="offaly">Offaly</option>
-                                        <option value="roscommon">Roscommon</option>
-                                        <option value="sligo">Sligo</option>
-                                        <option value="tipperary">Tipperary</option>
-                                        <option value="tyrone">Tyrone</option>
-                                        <option value="waterford">Waterford</option>
-                                        <option value="westmeath">Westmeath</option>
-                                        <option value="wexford">Wexford</option>
-                                        <option value="wicklow">Wicklow</option>
-                                    </select>
-
-                                    <label for="cars">Property Type</label>
-                                    <select class="form-select" name="cars" id="cars">
-                                        <option value="volvo">House</option>
-                                        <option value="saab">Apartment</option>
-                                    </select>
-                                    <label for="cars">Beds</label>
-
-                                    <select class="form-select" name="cars" id="cars">
-                                        <option value="volvo">1</option>
-                                        <option value="saab">2</option>
-                                        <option value="saab">3</option>
-                                        <option value="saab">4</option>
-                                        <option value="saab">5</option>
-                                    </select>
-                                </div>
-                                <hr />
-                                <div>
-                                    <label class="form-check-label">House Price</label>
-                                    <label id="hpMinLabel" class="form-label">0</label>
-                                    <label> - </label>
-                                    <label id="hpMaxLabel" class="form-label">0</label>
-                                    <input type="range" min="100000" max="1000000" value="0" class="form-range"
-                                        id="hpSlider" oninput="recalculateData()" step="5000">
-                                    <input type="number" value="0" id="hpPriceLabel" class="form-control"
-                                        name="hpPriceLabel" />
-                                </div>
-                                <hr />
-                                <div>
-                                    <label>Mortgage Needed</label>
-                                    <output id="mortgageNeededLabel">
-                                    </output>
-                                    <br />
-                                    <label>Deposit Needed</label>
-                                    <output id="depositNeededLabel">
-                                    </output>
-                                </div>
-                                <hr />
-                                <div id="fhsContainer">
-                                    <label>FHS Valued</label>
-                                    <output id="fhsOutput">
-                                    </output>
-                                    <br />
-                                    <label>Home Value With FHS</label>
-                                    <output id="fhsValue">
-                                    </output>
-                                </div>
+                        <div class="card-body">
+                            <div>
+                                <p><b>Note: Non first time buyers cannot make use of any of the goverment supports</b>
+                                </p>
                                 <input type="checkbox" class="form-check-input" oninput="recalculateData()"
-                                    id="useFHS" />
-                                <a href="https://www.firsthomescheme.ie/">Use the FHS?</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="text-center">The Money You Put In</h3>
-                            </div>
-
-                            <div class="card-body">
-                                <div>
-                                    <label class="form-check-label">Down Payment</label>
-                                    <label id="dpMinLabel" class="form-label">0</label>
-                                    <label> - </label>
-                                    <label id="dpMaxLabel" class="form-label">0</label>
-                                    <input type="range" min="0" max="100000" value="0" class="form-range" id="dpSlider"
-                                        oninput="recalculateData()" step="500">
-                                    <input type="number" value="0" id="dpPriceLabel" class="form-control"
-                                        name="dpPriceLabel" />
-                                </div>
-
-                                <label class="form-label">
-                                    Down Payment
-                                </label>
-                                <label class="form-label" id="totalDownpaymentLabel">
-                                    0
-                                </label>
-                                <hr />
-                                <div id="taxIncomeContainer" style="display:none">
-                                    <ul class="list-inline">
-                                        <li>
-                                            <label class="form-label">
-                                                Year 1 Tax Income
-                                            </label>
-                                            <input type="number" class="form-control" oninput="recalculateData()"
-                                                id="year1Number" />
-                                        </li>
-
-                                        <li>
-                                            <label class="form-label">
-                                                Year 2 Tax Income
-                                            </label>
-                                            <input type="number" class="form-control" oninput="recalculateData()"
-                                                id="year2Number" />
-                                        </li>
-
-                                        <li>
-                                            <label class="form-label">
-                                                Year 3 Tax Income
-                                            </label>
-                                            <input type="number" class="form-control" oninput="recalculateData()"
-                                                id="year3Number" />
-                                        </li>
-
-                                        <li>
-                                            <div class="form-outline">
-                                                <label class="form-label" for="typeNumber">Year 4 Tax Income</label>
-                                                <input for="typePhone" type="number" class="form-control"
-                                                    oninput="recalculateData()" id="year4Number" />
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <label class="form-label">
-                                                Total
-                                            </label>
-                                            <label class="form-label" id="yearTotalLabel">
-                                                0
-                                            </label>
-                                        </li>
-                                    </ul>
-                                </div>
+                                    id="amFtb" />
+                                <label>First Time Buyer?</label>
+                                <br />
                                 <input type="checkbox" class="form-check-input" oninput="recalculateData()"
-                                    id="useHTB" />
+                                    id="useLHAL" />
+                                <label>I Intend to use the Local Home Authority Loan</label>
+                                <a href="https://localauthorityhomeloan.ie/">Whats that?</a>
+                            </div>
+                            <hr />
+                            <div>
+                                <label class="form-check-label">Salary</label>
+                                <label id="sMinLabel" class="form-label">0</label>
+                                <label> - </label>
+                                <label id="sMaxLabel" class="form-label">0</label>
+                                <input type="range" min="10000" max="200000" value="0" class="form-range" id="sSlider"
+                                    oninput="recalculateData()" step="1000">
+                                <input type="number" value="0" class="form-control" id="sPriceLabel" name="quantity"  disabled/>
+                            </div>
+                            <hr />
+                            <div>
+                                <label>Est Max Mortgage</label>
+                                <output id="maxMortgageLabel">
+                                </output>**
+                                <hr>
+                                <p>** The actual calculated Est Max Mortgage is based on:
+                                <ul>
+                                    <li>Second time buyers value is 3.5x the gross salary above</li>
+                                    <li>First time buyers value is 4x the gross salary above.</li>
+                                    <li>LHAL buyers value is roughly 4.25x the gross salary above</li>
+                                </ul>
+                                The value above does not represent the actual value a bank/LHAL may quote or even give
+                                you. Use the calculators linked below to roughly gain an idea of how much they may give
+                                you</p>
                                 <a
-                                    href="https://www.citizensinformation.ie/en/housing/owning-a-home/help-with-buying-a-home/help-to-buy-scheme/">Use
-                                    HTB?</a>
+                                    href="https://personalbanking.bankofireland.com/borrow/mortgages/calculators/mortgage-calculator/">
+                                    BOI Mortgage Calculator</a>
+                                <br>
+                                <a href="https://aib.ie/our-products/mortgages/mortgage-calculator"> AIB Mortgage
+                                    Calculator</a><br>
+                                <a href="https://localauthorityhomeloan.ie/calculator/">
+                                    LHAL Calculator
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="text-center">The Fees</h3>
+                </div>
+                <div class="col mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title text-center">The House Itself</h3>
+                        </div>
+                        <div class="card-body">
+                            <div>
+                                <p><b>Note: Second hand houses cannot make use of any of the goverment supports</b></p>
+
+                                <label for="pcSelect">Property Condition</label>
+                                <select class="form-select" name="pc" id="pcSelect" oninput="recalculateData()">
+                                    <option value="pcNH">New House</option>
+                                    <option value="pcSHH">Second Hand House</option>
+                                    <option value="pcSB">Self Build</option>
+                                </select>
+
+                                <label for="cSelect">County</label>
+                                <select class="form-select" name="cSelect" id="cSelect" oninput="recalculateData()">
+                                    <option value="antrim">Antrim</option>
+                                    <option value="armagh">Armagh</option>
+                                    <option value="carlow">Carlow</option>
+                                    <option value="cavan">Cavan</option>
+                                    <option value="clare">Clare</option>
+                                    <option value="cork">Cork</option>
+                                    <option value="derry">Derry</option>
+                                    <option value="donegal">Donegal</option>
+                                    <option value="down">Down</option>
+                                    <option value="dublin">Dublin</option>
+                                    <option value="fermanagh">Fermanagh</option>
+                                    <option value="galway">Galway</option>
+                                    <option value="kerry">Kerry</option>
+                                    <option value="kildare">Kildare</option>
+                                    <option value="kilkenny">Kilkenny</option>
+                                    <option value="laois">Laois</option>
+                                    <option value="leitrim">Leitrim</option>
+                                    <option value="limerick">Limerick</option>
+                                    <option value="longford">Longford</option>
+                                    <option value="louth">Louth</option>
+                                    <option value="mayo">Mayo</option>
+                                    <option value="meath">Meath</option>
+                                    <option value="monaghan">Monaghan</option>
+                                    <option value="offaly">Offaly</option>
+                                    <option value="roscommon">Roscommon</option>
+                                    <option value="sligo">Sligo</option>
+                                    <option value="tipperary">Tipperary</option>
+                                    <option value="tyrone">Tyrone</option>
+                                    <option value="waterford">Waterford</option>
+                                    <option value="westmeath">Westmeath</option>
+                                    <option value="wexford">Wexford</option>
+                                    <option value="wicklow">Wicklow</option>
+                                </select>
+
+                                <label for="ptSelect">Property Type</label>
+                                <select class="form-select" name="ptSelect" id="ptSelect">
+                                    <option value="volvo">House</option>
+                                    <option value="saab">Apartment</option>
+                                </select>
+                                <label for="beds">Beds</label>
+                                <select class="form-select" name="beds" id="beds">
+                                    <option value="bed-1">1</option>
+                                    <option value="bed-2">2</option>
+                                    <option value="bed-3">3</option>
+                                    <option value="bed-4">4</option>
+                                    <option value="bed-5">5</option>
+                                </select>
+
+                                <input type="checkbox" class="form-check-input" oninput="recalculateData()"
+                                    id="amFtb" />
+                                <a
+                                    href="https://www.citizensinformation.ie/en/environment/buildings-and-structures/derelict-sites/">Is
+                                    this building derelict?</a>
                             </div>
-                            <div class="card-body">
-                                <p>Along side actually buying the house, there is a ton of other stuff you need to think
-                                    about when moving. Including the 3 Major fees that come along with purchusing a
-                                    property</p>
-                                <h4>Pre Purchusing Fees</h4>
-                                <ul>
-                                    <li>Legal Fees, Solicitors can either charge a percentage of the house or a flat fee
-                                        that can somewhere be in the range of 1.5k to 3k</li>
-                                    <li>If the House is a second hand property, you will need to pay for a Surveyor.
-                                        They generally cost just under a 300-1k for a report</li>
-                                    <li>If the House is a new build, you will need a snag list. A snaglist is generally
-                                        a list of items that your house will need that was not included in the original
-                                        build.</li>
-                                    <li>Lastly, if the house is a second hand house, you willl need a to pay valuation
-                                        fees before you can go for the mortgage. The price can be around 150-250</li>
+                            <hr />
+                            <div>
+                                <label class="form-check-label">House Price</label>
+                                <label id="hpMinLabel" class="form-label">0</label>
+                                <label> - </label>
+                                <label id="hpMaxLabel" class="form-label">0</label>
+                                <input type="range" min="30000" max="1000000" value="0" class="form-range" id="hpSlider"
+                                    oninput="recalculateData()" step="5000">
+                                <input type="number" value="0" id="hpPriceLabel" class="form-control"
+                                    name="hpPriceLabel" disabled/>
+                            </div>
+                            <hr />
+                            <input type="checkbox" class="form-check-input" oninput="recalculateData()" id="useFHS" />
+                            <label>Use the First Home Scheme</label>
+                            <a href="https://www.firsthomescheme.ie/">Whats that?</a>
+                            <div id="fhsContainer">
+                                <label>FHS Valued</label>
+                                <output id="fhsOutput">
+                                </output>
+                                <br />
+                                <label>Home Value With FHS</label>
+                                <output id="fhsValue">
+                                </output>
+                            </div>
+                            <hr />
+                            <div>
+                                <label>Mortgage Needed Without FHS</label>
+                                <output id="mortgageNeededLabel">
+                                </output>
+                                <br />
+                                <label>Deposit Needed</label>
+                                <output id="depositNeededLabel">
+                                </output>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-center">The Money You Put In</h3>
+                        </div>
+
+                        <div class="card-body">
+                            <div>
+                                <label class="form-check-label">Down Payment</label>
+                                <label id="dpMinLabel" class="form-label">0</label>
+                                <label> - </label>
+                                <label id="dpMaxLabel" class="form-label">0</label>
+                                <input type="range" min="0" max="100000" value="0" class="form-range" id="dpSlider"
+                                    oninput="recalculateData()" step="500">
+                                <input type="number" value="0" id="dpPriceLabel" class="form-control"
+                                    name="dpPriceLabel" disabled/>
+                            </div>
+
+                            <hr />
+                            <input type="checkbox" class="form-check-input" oninput="recalculateData()" id="useHTB" />
+                            <label>Use the Help To Buy Scheme</label>
+                            <a
+                                href="https://www.citizensinformation.ie/en/housing/owning-a-home/help-with-buying-a-home/help-to-buy-scheme/">
+                                Whats that?</a>
+                            <div id="taxIncomeContainer" style="display:none">
+                                <ul class="list-inline">
+                                    <li>
+                                        <label class="form-label">
+                                            Year 1 Tax Income
+                                        </label>
+                                        <input type="number" class="form-control" oninput="recalculateData()"
+                                            id="year1Number" />
+                                    </li>
+
+                                    <li>
+                                        <label class="form-label">
+                                            Year 2 Tax Income
+                                        </label>
+                                        <input type="number" class="form-control" oninput="recalculateData()"
+                                            id="year2Number" />
+                                    </li>
+
+                                    <li>
+                                        <label class="form-label">
+                                            Year 3 Tax Income
+                                        </label>
+                                        <input type="number" class="form-control" oninput="recalculateData()"
+                                            id="year3Number" />
+                                    </li>
+
+                                    <li>
+                                        <div class="form-outline">
+                                            <label class="form-label" for="typeNumber">Year 4 Tax Income</label>
+                                            <input for="typePhone" type="number" class="form-control"
+                                                oninput="recalculateData()" id="year4Number" />
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <label class="form-label">
+                                            Total
+                                        </label>
+                                        <label class="form-label" id="yearTotalLabel">
+                                            0
+                                        </label>
+                                    </li>
                                 </ul>
-                                <h4>Post Purchusing Fees</h4>
-                                <ul>
-                                    <li>Home Insurence, can range depending on insurence providers</li>
-                                    <li>Renovation & redecoration if the house is a second hand home, disregard if its a
-                                        new build</li>
-                                    <li>Movers costs. Rent a van for a day can cost a couple a hundrad</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="text-center">The Breakdown</h3>
+                                <p>
+                                    Note: The help to buy scheme can be technically used in conjunction with a small
+                                    percentage of the despoit or without the actual deposit of the house Itself.
+                                    However, banks will tend not to even get to the stage of discussing mortage options
+                                    without you showing them that you have cash/savings on hand.
+                                </p>
+
+                                <p>
+                                    You can either recoup the cost of the house after the deal is sealed and claim back
+                                    the HTB later. Or during the application process submit for a HTB with a mortgage
+                                    reference number.
+                                </p>
                             </div>
 
-                            <div class="card-body">
-                                <h4>The Big Money</h4>
-                                <table class="table">
-                                    <tr>
-                                        <td>
-                                            <label>House Price</label>
-                                        </td>
-                                        <td>
-                                            <label id="bHPLabel">0</label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label>Borrowed Amount</label>
-                                        </td>
-                                        <td>
-                                            <label id="bBALabel"> 0</label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label>Downpayment</label>
-                                        </td>
-                                        <td>
-                                            <label id="bDPLabel">0</label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label>FHS</label>
-                                        </td>
-                                        <td>
-                                            <label id="bFHSLabel">0</label>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>
-                                            <label>HTB</label>
-                                        </td>
-                                        <td>
-                                            <label id="bHTBLabel">0</label>
-                                        </td>
-                                    </tr>
-                                </table>
-                                <h4>The Small Money</h4>
-                                <table class="table">
-                                    <tr>
-                                        <td>
-                                            <label>Solicitor Fee</label>
-                                        </td>
-                                        <td>
-                                            <label>2000</label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label>Snaglist</label>
-                                        </td>
-                                        <td>
-                                            <label>5000</label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label>Valuation</label>
-                                        </td>
-                                        <td>
-                                            <label>500</label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label>Movers costs</label>
-                                        </td>
-                                        <td>
-                                            <label>500</label>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
+                            <label class="form-label">
+                                Down Payment
+                            </label>
+                            <b><label class="form-label" id="totalDownpaymentLabel">
+                                    0
+                                </label></b>
                         </div>
                     </div>
-                    <div class="col mb-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="text-center">The Savings Part</h3>
-                            </div>
-
-                            <div class="card-body">
-                                <p>You would need to put away <lable id="bSavingLabel">0</lable> for a total of 12
-                                    Months to reach the deposit of <lable id="bDepositLabel">0</lable> required for a
-                                    house costing <lable id="bHouseLabel">0</lable>
-                                </p>
-                            </div>
+                </div>
+                <div class="col mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-center">The Fees</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Along side actually buying the house, there is some other stuff for consideration.
+                            </p>
+                            <h4>Pre Purchusing Fees</h4>
+                            <ul>
+                                <li>Legal Fees, Solicitors can either charge a percentage of the house or a flat fee
+                                    that can somewhere be in the range of 1.5k to 3k</li>
+                                <li>If the House is a second hand property, you will need to pay for a Surveyor.
+                                    They generally cost around 300-1k for a report</li>
+                                <li>If the House is a new build, you will need a snag list. A snaglist is generally
+                                    a list of items that your house will need that was not included in the original
+                                    build.</li>
+                                <li>Lastly, if the house is a second hand house, you willl need a to pay valuation
+                                    fees before you can go for the mortgage. The price can be around 150-250</li>
+                            </ul>
+                            <h4>Post Purchusing Fees</h4>
+                            <ul>
+                                <li>Home Insurence, can range depending on insurence providers. I wont go into detail
+                                    here, but its best to look around yourself after you sign for the house</li>
+                                <li>Renovation & redecoration if the house is a second hand home, disregard if its a new
+                                    build</li>
+                                <li>Movers costs. Rent a van for a day can cost a couple a hundrad and more if you plan
+                                    to hire out the work</li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="col mb-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="text-center">The Results</h3>
-                            </div>
-                            <div id="yesDisplay" style="display:none">
-                                <p class="text-center text-uppercase font-weight-bold display-1">
-                                    &#128512;
-                                </p>
-                                <p class="text-center">
-                                    Yes, it is *technically* possible for you to buy a house based on the values you put
-                                    in. However, its subject to the banks lending critira and if you are accepted for
-                                    the schemes/grants/loans above. I wouldnt let that discorage you however, so come up
-                                    with a plan for the next year or several
-                                </p>
-                            </div>
-                            <div id="noDisplay" style="display:none">
-                                <p class="text-center text-uppercase font-weight-bold display-1">
-                                    &#128532;
-                                </p>
-                                <p class="text-center">
-                                    No, or rather, based on the information you provided. You either dont have enough to
-                                    buy a house from a mortgage alone, with the schemes avalible or salary you have. You
-                                    could technically get enough in cash by saving up for years. But your best bet is to
-                                    likely wait for an economic crash :(
-                                </p>
-                            </div>
+                </div>
+                <div class="col mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-center">The Breakdown</h3>
                         </div>
+
+                        <div class="card-body">
+                            <h4>The Big Money</h4>
+                            <table class="table">
+                                <tr>
+                                    <th scope="col">Item</th>
+                                    <th scope="col">Cost</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>House Price</label>
+                                    </td>
+                                    <td>
+                                        <label id="bHPLabel">0</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Borrowed Amount</label>
+                                    </td>
+                                    <td>
+                                        <label id="bBALabel"> 0</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Downpayment</label>
+                                    </td>
+                                    <td>
+                                        <label id="bDPLabel">0</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>FHS</label>
+                                    </td>
+                                    <td>
+                                        <label id="bFHSLabel">0</label>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>HTB</label>
+                                    </td>
+                                    <td>
+                                        <label id="bHTBLabel">0</label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <h4>The Small Money</h4>
+                            <table class="table">
+
+                                <tr>
+                                    <th scope="col">Item</th>
+                                    <th scope="col">Cost</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Solicitor Fee</label>
+                                    </td>
+                                    <td>
+                                        <label>2,000</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Snaglist</label>
+                                    </td>
+                                    <td>
+                                        <label>5,000</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Valuation</label>
+                                    </td>
+                                    <td>
+                                        <label>500</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Movers costs</label>
+                                    </td>
+                                    <td>
+                                        <label>500</label>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <h4>The Bonus</h4>
+                            <table class="table">
+                                <tr>
+                                    <th scope="col">Grant</th>
+                                    <th scope="col">+</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Vacant Property Refurbishment Grant</label>
+                                    </td>
+                                    <td>
+                                        <label>50,000</label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="text-center">The Numbers Part</h3>
+                        </div>
+
+
+                        <div class="card-body">
+                            <div>
+                                <label class="form-check-label">How long can you wait?</label>
+                                <br>
+                                <label id="mMinLabel" class="form-label">1 Month</label>
+                                <label> - </label>
+                                <label id="mMaxLabel" class="form-label">120 Months</label>
+                                <input type="range" min="1" max="120" value="0" class="form-range" id="mSlider"
+                                    oninput="recalculateData()" step="1">
+                            </div>
+    
+                            <p>You would need to put away <lable id="bSavingLabel">0</lable> for a total of <label id="mLabel"></label>
+                                Months to reach the downpayment you want of <lable id="bDepositLabel">0</lable> required
+                                for a
+                                house costing <lable id="bHouseLabel">0</lable>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="col mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">The Results</h3>
+                    </div>
+                    <div id="yesDisplay" style="display:none">
+                        <p class="text-center text-uppercase font-weight-bold display-1">
+                            &#128512;
+                        </p>
+                        <p class="text-center">
+                            Yes, it is *technically* possible for you to buy a house based on the values you put
+                            in. However, its subject to the banks lending critira and if you are accepted for
+                            the schemes/grants/loans above. I wouldnt let that discorage you however, so come up
+                            with a plan for the next year or several
+                        </p>
+                    </div>
+                    <div id="noDisplay" style="display:none">
+                        <p class="text-center text-uppercase font-weight-bold display-1">
+                            &#128532;
+                        </p>
+                        <p class="text-center">
+                            No, or rather, based on the information you provided. You either dont have enough to
+                            buy a house from a mortgage alone, with the schemes avalible or salary you have. You
+                            could technically get enough in cash by saving up for years. But your best bet is to
+                            likely wait for an economic crash :(
+                        </p>
                     </div>
                 </div>
             </div>
